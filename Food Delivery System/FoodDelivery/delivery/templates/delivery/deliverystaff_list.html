@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="my-4">Delivery Staff</h1>
+<a href="{% url 'deliverystaff_create' %}" class="btn btn-primary mb-3">Add Delivery Staff</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for staff in deliverystaff %}
+            <tr>
+                <td>{{ staff.Name }}</td>
+                <td>{{ staff.Contact }}</td>
+                <td>
+                    <a href="{% url 'deliverystaff_update' staff.StaffID %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'deliverystaff_delete' staff.StaffID %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

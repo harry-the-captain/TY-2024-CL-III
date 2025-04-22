@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="my-4">Customers</h1>
+<a href="{% url 'customer_create' %}" class="btn btn-primary mb-3">Add Customer</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in customers %}
+            <tr>
+                <td>{{ customer.Name }}</td>
+                <td>{{ customer.Contact }}</td>
+                <td>
+                    <a href="{% url 'customer_update' customer.CustomerID %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'customer_delete' customer.CustomerID %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container" style="padding: 20px;">
+    <h1 class="my-4" style="text-align: center; color: #333; font-weight: bold; margin-bottom: 30px;">
+        Welcome to the Food Delivery System
+    </h1>
+    <div class="row">
+        <!-- Restaurants Card -->
+        <div class="col-md-4">
+            <div class="card" style="border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
+                <div class="card-body" style="text-align: center;">
+                    <h5 class="card-title" style="color: #007BFF; font-weight: bold;">Restaurants</h5>
+                    <p class="card-text" style="color: #555;">Manage restaurants and their menus.</p>
+                    <a href="{% url 'restaurant_list' %}" class="btn btn-primary" style="background-color: #007BFF; border: none; padding: 10px 20px;">
+                        Go to Restaurants
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customers Card -->
+        <div class="col-md-4">
+            <div class="card" style="border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
+                <div class="card-body" style="text-align: center;">
+                    <h5 class="card-title" style="color: #28A745; font-weight: bold;">Customers</h5>
+                    <p class="card-text" style="color: #555;">Manage customer information.</p>
+                    <a href="{% url 'customer_list' %}" class="btn btn-primary" style="background-color: #28A745; border: none; padding: 10px 20px;">
+                        Go to Customers
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delivery Staff Card -->
+        <div class="col-md-4">
+            <div class="card" style="border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
+                <div class="card-body" style="text-align: center;">
+                    <h5 class="card-title" style="color: #DC3545; font-weight: bold;">Delivery Staff</h5>
+                    <p class="card-text" style="color: #555;">Manage delivery staff information.</p>
+                    <a href="{% url 'deliverystaff_list' %}" class="btn btn-primary" style="background-color: #DC3545; border: none; padding: 10px 20px;">
+                        Go to Delivery Staff
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add some custom inline CSS for hover effects -->
+<style>
+    .card:hover {
+        transform: translateY(-10px);
+    }
+</style>
+{% endblock %}

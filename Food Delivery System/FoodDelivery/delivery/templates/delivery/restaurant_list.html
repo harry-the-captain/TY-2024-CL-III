@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="my-4">Restaurants</h1>
+<a href="{% url 'restaurant_create' %}" class="btn btn-primary mb-3">Add Restaurant</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for restaurant in restaurants %}
+            <tr>
+                <td>{{ restaurant.Name }}</td>
+                <td>{{ restaurant.Location }}</td>
+                <td>
+                    <a href="{% url 'restaurant_update' restaurant.RestaurantID %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'restaurant_delete' restaurant.RestaurantID %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
