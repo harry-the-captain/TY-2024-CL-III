@@ -1,0 +1,13 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Member Details{% endblock %}
+
+{% block content %}
+    <h1>Member: {{ member.first_name }} {{ member.last_name }}</h1>
+     <p><strong>Membership ID:</strong> {{ member.membership_id }}</p>
+    <p><strong>Email:</strong> {{ member.email }}</p>
+    <p><strong>Phone Number:</strong> {{ member.phone_number|default:"N/A" }}</p>
+     <p><strong>Join Date:</strong> {{ member.join_date|date:"F j, Y" }}</p>
+    <a href="{% url 'member_update' member.id %}" class="btn btn-sm btn-primary">Edit</a>
+    <a href="{% url 'member_list' %}" class="btn btn-secondary">Back to Members</a>
+{% endblock %}

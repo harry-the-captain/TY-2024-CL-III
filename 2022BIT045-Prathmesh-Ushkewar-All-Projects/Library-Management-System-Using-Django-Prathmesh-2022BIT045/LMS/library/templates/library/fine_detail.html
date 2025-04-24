@@ -1,0 +1,20 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Fine Details{% endblock %}
+
+{% block content %}
+    <h1>Fine Details</h1>
+     <p><strong>Book:</strong> {{ fine.loan.book.title }}</p>
+    <p><strong>Member:</strong> {{ fine.loan.member.first_name }} {{ fine.loan.member.last_name }}</p>
+    <p><strong>Amount:</strong> ${{ fine.amount }}</p>
+     <p><strong>Payment Date:</strong> {{ fine.payment_date|date:"F j, Y"|default:"Not yet paid" }}</p>
+      <p><strong>Paid:</strong>
+          {% if fine.paid %}
+             Yes
+          {% else %}
+             No
+           {% endif %}
+        </p>
+    <a href="{% url 'fine_update' fine.id %}" class="btn btn-sm btn-primary">Edit</a>
+    <a href="{% url 'fine_list' %}" class="btn btn-secondary">Back to Fines</a>
+{% endblock %}

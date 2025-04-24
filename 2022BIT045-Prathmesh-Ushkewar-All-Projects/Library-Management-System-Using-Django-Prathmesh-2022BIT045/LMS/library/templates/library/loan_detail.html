@@ -1,0 +1,21 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Loan Details{% endblock %}
+
+{% block content %}
+    <h1>Loan Details</h1>
+     <p><strong>Book:</strong> {{ loan.book.title }}</p>
+    <p><strong>Member:</strong> {{ loan.member.first_name }} {{ loan.member.last_name }}</p>
+    <p><strong>Loan Date:</strong> {{ loan.loan_date|date:"F j, Y" }}</p>
+    <p><strong>Due Date:</strong> {{ loan.due_date|date:"F j, Y" }}</p>
+     <p><strong>Returned Date:</strong> {{ loan.return_date|date:"F j, Y"|default:"Not yet returned" }}</p>
+      <p><strong>Returned:</strong>
+          {% if loan.returned %}
+             Yes
+          {% else %}
+             No
+           {% endif %}
+        </p>
+     <a href="{% url 'loan_update' loan.id %}" class="btn btn-sm btn-primary">Edit</a>
+    <a href="{% url 'loan_list' %}" class="btn btn-secondary">Back to Loans</a>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Fines{% endblock %}
+
+{% block content %}
+    <h1>Fines</h1>
+    <a href="{% url 'fine_create' %}" class="btn btn-primary mb-3">Add Fine</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Member</th>
+                <th>Amount</th>
+                <th>Paid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fine in fines %}
+            <tr>
+                <td>{{ fine.loan.book.title }}</td>
+                <td>{{ fine.loan.member.first_name }} {{fine.loan.member.last_name}}</td>
+                <td>${{ fine.amount }}</td>
+                 <td>
+                    {% if fine.paid %}
+                        Yes
+                     {% else %}
+                       No
+                      {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'fine_detail' fine.id %}" class="btn btn-sm btn-info">View</a>
+                    <a href="{% url 'fine_update' fine.id %}" class="btn btn-sm btn-primary">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
