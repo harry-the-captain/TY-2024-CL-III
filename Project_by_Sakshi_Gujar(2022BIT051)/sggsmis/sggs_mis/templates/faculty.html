@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Faculty</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Faculty List</h1>
+    <table border="1">
+        <tr>
+            <th>Faculty ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Email</th>
+        </tr>
+        {% for faculty in faculties %}
+        <tr>
+            <td>{{ faculty.faculty_id }}</td>
+            <td>{{ faculty.name }}</td>
+            <td>{{ faculty.department }}</td>
+            <td>{{ faculty.email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'home' %}">Back to Dashboard</a>
+</body>
+</html>

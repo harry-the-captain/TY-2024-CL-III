@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Library Books</h1>
+    <table border="1">
+        <tr>
+            <th>Book ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Branch</th>
+            <th>Year</th>
+            <th>Borrowed By</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.book_id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.branch }}</td>
+            <td>{{ book.year }}</td>
+            <td>{{ book.borrowed_by.name if book.borrowed_by else "Available" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'home' %}">Back to Dashboard</a>
+</body>
+</html>

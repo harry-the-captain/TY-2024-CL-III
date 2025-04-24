@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Attendance Records</h1>
+    <table border="1">
+        <tr>
+            <th>Reg No</th>
+            <th>Date</th>
+            <th>Subject</th>
+            <th>Faculty</th>
+            <th>Type</th>
+            <th>Status</th>
+        </tr>
+        {% for record in attendance_records %}
+        <tr>
+            <td>{{ record.reg_no.reg_no }}</td>
+            <td>{{ record.date }}</td>
+            <td>{{ record.subject }}</td>
+            <td>{{ record.faculty }}</td>
+            <td>{{ record.type }}</td>
+            <td>{{ record.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'home' %}">Back to Dashboard</a>
+</body>
+</html>

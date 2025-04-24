@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SGGSMIS - Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Welcome to SGGSMIS</h1>
+    <ul>
+        <li><a href="{% url 'students' %}">Students</a></li>
+        <li><a href="{% url 'attendance' %}">Attendance</a></li>
+        <li><a href="{% url 'faculty' %}">Faculty</a></li>
+        <li><a href="{% url 'library' %}">Library</a></li>
+        <li><a href="{% url 'exams' %}">Exams</a></li>
+    </ul>
+</body>
+</html>
