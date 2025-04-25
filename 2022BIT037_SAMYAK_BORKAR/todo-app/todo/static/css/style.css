@@ -1,0 +1,105 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+h2 {
+    text-align: center;
+    font-weight: bold;
+    color: #1C1C1C;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Input & Button Styles */
+form input {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    outline: none;
+    color: #1C1C1C;
+}
+
+form input::placeholder {
+    /* color: rgba(255, 255, 255, 0.7); */
+    color: #1C1C1C;
+}
+
+form .btn {
+    background: #00c897;
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+}
+
+form .btn:hover {
+    background: #009e75;
+}
+
+/* Task List */
+ul.list-group {
+    background: transparent;
+    border-radius: 10px;
+}
+.task-item {
+    color: #1C1C1C;
+}
+
+
+.list-group-item {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.list-group-item:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Completed Task Style */
+.list-group-item span.completed {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Buttons */
+.btn-sm {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+.btn-success {
+    background: #28a745;
+}
+
+.btn-success:hover {
+    background: #1e7e34;
+}
+
+.btn-danger {
+    background: #e63946;
+}
+
+.btn-danger:hover {
+    background: #c92a3a;
+}
