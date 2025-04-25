@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #E8F1F2;  /* Changed background to a light, soothing blue */
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #FFFFFF;
+            border-bottom: 2px solid #DEE2E6;
+        }
+
+        .navbar-brand {
+            font-size: 36px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .navbar .nav-link {
+            color: #495057;
+        }
+
+        .navbar .nav-link:hover {
+            color: #6C757D;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 500;
+            color: #495057;
+            margin-bottom: 40px;
+        }
+
+        .album-heading {
+            font-size: 28px;
+            font-weight: 400;
+            color: #495057;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .track-card {
+            width: 100%;
+            max-width: 280px;
+            margin: 20px;
+            border-radius: 10px;
+            background: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .track-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .track-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .track-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .track-info h5 {
+            font-size: 20px;
+            color: #495057;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .track-info p {
+            font-size: 14px;
+            color: #6C757D;
+            margin-bottom: 15px;
+        }
+
+        .audio-player {
+            width: 100%;
+            border: none;
+            background: #F8F9FA;
+            border-radius: 8px;
+        }
+
+        .audio-player::-webkit-media-controls {
+            color: #495057;
+        }
+
+        .audio-player::-webkit-media-controls-play-button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: #495057;
+        }
+
+        .audio-player::-webkit-media-controls-play-button:hover {
+            color: #6C757D;
+        }
+
+        .audio-player::-webkit-media-controls-volume-slider {
+            border: none;
+        }
+
+        .audio-player::-webkit-media-controls-panel {
+            background-color: #F8F9FA;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .album-card {
+            width: 100%;
+            max-width: 250px;
+            margin: 20px;
+            border-radius: 10px;
+            background: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .album-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .album-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .album-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .album-info h5 {
+            font-size: 20px;
+            color: #495057;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .album-info p {
+            font-size: 14px;
+            color: #6C757D;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .track-card {
+                max-width: 90%;
+            }
+
+            .album-card {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Melody</a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h1 class="heading">Enjoy Your Favorite Tunes</h1>
+        
+        <!-- Albums Section -->
+        <h2 class="album-heading">Albums</h2>
+        <div class="row">
+            {% for album in albums %}
+                <div class="col-md-3 col-sm-6">
+                    <div class="album-card">
+                        <img class="album-img" src="{{ album.cover_art.url }}" alt="{{ album.name }}">
+                        <div class="album-info">
+                            <h5>{{ album.name }}</h5>
+                            <p>{{ album.artist }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Tracks Section -->
+        <h2 class="album-heading">Tracks</h2>
+        <div class="row">
+            {% for track in tracks %}
+                <div class="col-md-3 col-sm-6">
+                    <div class="track-card">
+                        <img class="track-img" src="{{ track.cover_art.url }}" alt="{{ track.name }}">
+                        <div class="track-info">
+                            <h5>{{ track.name }}</h5>
+                            <p>{{ track.artist }}</p>
+                            <audio controls class="audio-player">
+                                <source src="{{ track.file.url }}" type="audio/mp3">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

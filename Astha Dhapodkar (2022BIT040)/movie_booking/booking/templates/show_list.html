@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Movies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 2rem auto;
+        }
+        .movie-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .movie-card img {
+            width: 100px;
+            border-radius: 10px;
+        }
+        .movie-info {
+            flex-grow: 1;
+            margin-left: 1rem;
+        }
+        .movie-info h2 {
+            margin: 0;
+            color: #333;
+        }
+        .movie-info p {
+            margin: 0.5rem 0;
+            color: #666;
+        }
+        .book-btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .book-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Available Movies</h1>
+    </header>
+    <div class="container">
+        <!-- Loop through movies from the backend -->
+        {% for movie in movies %}
+        <div class="movie-card">
+            <img src="{{ movie.image_url }}" alt="{{ movie.title }}">
+            <div class="movie-info">
+                <h2>{{ movie.title }}</h2>
+                <p>{{ movie.description }}</p>
+                <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+                <p><strong>Duration:</strong> {{ movie.duration }} minutes</p>
+            </div>
+            <a href="{% url 'booking:book_movie' movie.id %}" class="book-btn">Book Now</a>
+        </div>
+        {% empty %}
+        <p>No movies available at the moment.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
