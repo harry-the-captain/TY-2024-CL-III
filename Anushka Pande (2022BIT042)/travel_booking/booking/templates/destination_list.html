@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Destinations</h1>
+        <a href="{% url 'create_destination' %}" class="btn btn-primary">Add Destination</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for destination in destinations %}
+                <tr>
+                    <td>{{ destination.destination_id }}</td>
+                    <td>{{ destination.name }}</td>
+                    <td>{{ destination.country }}</td>
+                    <td>
+                        <a href="{% url 'update_destination' destination.destination_id %}" class="btn btn-warning">Edit</a>
+                        <a href="{% url 'delete_destination' destination.destination_id %}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Booking</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Create Booking</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="user_id">User:</label>
+            <select id="user_id" name="user_id" class="form-control">
+                {% for user in users %}
+                <option value="{{ user.user_id }}">{{ user.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="destination_id">Destination:</label>
+            <select id="destination_id" name="destination_id" class="form-control">
+                {% for destination in destinations %}
+                <option value="{{ destination.destination_id }}">{{ destination.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+</body>
+</html>

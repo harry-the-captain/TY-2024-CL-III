@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agents</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Agents</h1>
+    <a href="{% url 'create_agent' %}" class="btn btn-primary">Add Agent</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for agent in agents %}
+            <tr>
+                <td>{{ agent.agent_id }}</td>
+                <td>{{ agent.name }}</td>
+                <td>{{ agent.contact }}</td>
+                <td>
+                    <a href="{% url 'update_agent' agent.agent_id %}" class="btn btn-warning">Edit</a>
+                    <a href="{% url 'delete_agent' agent.agent_id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
